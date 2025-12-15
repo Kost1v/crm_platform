@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import CompanyTable from "../components/companies/CompanyTable";
-import { companies } from "../data/mockData";
+import { companies, type Company } from "../data/mockData";
+import AddCompanyModal from "../components/companies/AddCompanyModal";
 
 const Companies = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const filteredCompanies = companies.filter((company) =>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [companiesList, setCompaniesList] = useState<Company[]>(companies);
+
+  const handleAddCompany = (newCompany: Company) => {
+    setCompaniesList([newCompany, ...companiesList]);    
+  };
+
+  const filteredCompanies = companiesList.filter((company) =>
     company.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
@@ -28,7 +36,7 @@ const Companies = () => {
         <div className="relative w-114">
           <input
             type="text"
-            className="border border-[#d1d5db] rounded-lg py-3 pl-3 pr-10 h-11 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-gray-400"
+            className="border border-[#d1d5db] rounded-lg py-3 pl-3 pr-10 h-11 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-gray-400 focus:border-transparent transition-all"
             placeholder="Search.."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -37,20 +45,25 @@ const Companies = () => {
         </div>
         <button
           type="button"
-          className="border border-[#d1d5db] rounded-l rounded-r py-2.5 px-5 h-11 w-37 text-white bg-[#111827] justify-center items-center flex ml-auto"
+          onClick={() => setIsModalOpen(true)}
+          className="border cursor-pointer border-[#d1d5db] rounded-l rounded-r py-2.5 px-5 h-11 w-37 text-white bg-[#111827] justify-center items-center flex ml-auto"
         >
           Add company
         </button>
       </section>
 
       {filteredCompanies.length > 0 ? (
-        // 4. Передаємо ВІДФІЛЬТРОВАНИЙ список
         <CompanyTable companies={filteredCompanies} />
       ) : (
         <div className="text-center py-10 text-gray-500">
           No companies found matching "{searchQuery}"
         </div>
       )}
+      <AddCompanyModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCompany}
+      />
     </div>
   );
 };

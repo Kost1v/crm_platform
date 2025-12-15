@@ -2,7 +2,7 @@ export interface Company {
   id: number;
   name: string;
   category: string;
-  status: 'Active' | 'Not active' | 'Pending' | 'Suspended';
+  status: 'Active' | 'Not active' | 'Pending' | 'Suspended' | string;
   promotion: boolean;
   country: string;
   joinedDate: string;

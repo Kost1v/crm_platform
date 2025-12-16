@@ -179,10 +179,10 @@ const Dashboard = () => {
                       </div>
                     </td>
                     <td className="py-3 px-2 text-center text-gray-600 text-sm">
-                      {item.sold}
+                      {item.category}
                     </td>
                     <td className="py-3 px-4 text-center font-medium text-gray-800 text-sm">
-                      ${item.income}
+                      {item.interest}
                     </td>
                   </tr>
                 ))}

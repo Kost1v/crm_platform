@@ -21,8 +21,7 @@ const AddCompanyModal = ({ isOpen, onClose, onAdd }: AddCompanyModalProps) => {
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
+    e.preventDefault();    
 
     // Створюємо новий об'єкт компанії
     const newCompany: Company = {

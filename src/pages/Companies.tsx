@@ -1,16 +1,26 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import CompanyTable from "../components/companies/CompanyTable";
-import { companies, type Company } from "../data/mockData";
+import { companies as initialCompanies, type Company } from "../data/mockData";
 import AddCompanyModal from "../components/companies/AddCompanyModal";
 
 const Companies = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [companiesList, setCompaniesList] = useState<Company[]>(companies);
+  const [companiesList, setCompaniesList] = useState<Company[]>(() => {
+    const savedData = localStorage.getItem("crm_companies_data");
+    if (savedData) {
+      return JSON.parse(savedData);
+    }   
+    
+    return initialCompanies;
+  });
 
   const handleAddCompany = (newCompany: Company) => {
-    setCompaniesList([newCompany, ...companiesList]);    
+    const updatedList = [newCompany, ...companiesList];
+    setCompaniesList(updatedList);
+    // Зберігаємо оновлений список у localStorage
+    localStorage.setItem("crm_companies_data", JSON.stringify(updatedList));
   };
 
   const filteredCompanies = companiesList.filter((company) =>

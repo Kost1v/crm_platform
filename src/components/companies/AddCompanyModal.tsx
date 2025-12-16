@@ -58,9 +58,15 @@ const AddCompanyModal = ({ isOpen, onClose, onAdd }: AddCompanyModalProps) => {
 
   return (
     // Затемнений фон (Overlay)
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 backdrop-blur-[2px]">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 backdrop-blur-[2px]"
+    >
       {/* Біле вікно */}
-      <div className="bg-[#f3f4f6] rounded-xl w-[700px] p-7 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-[#f3f4f6] rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-7 relative shadow-2xl animate-in fade-in zoom-in duration-200"
+      >
         {/* Заголовок + Кнопка закриття */}
         <div className="flex justify-between items-center mb-[42px]">
           <h2 className="text-xl font-semibold text-[#111827]">
@@ -75,7 +81,7 @@ const AddCompanyModal = ({ isOpen, onClose, onAdd }: AddCompanyModalProps) => {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
             {/* ЛІВА КОЛОНКА */}
             <div className="space-y-5">
               {/* Logo Upload Area */}
@@ -171,7 +177,6 @@ const AddCompanyModal = ({ isOpen, onClose, onAdd }: AddCompanyModalProps) => {
                   type="text"
                   placeholder="14.02.2021"
                   className="w-full border text-[#6b7280] font-normal text-[14px] border-[#d1d5db] rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-[#6b7280] focus:border-transparent transition-all"
-                  
                 />
               </div>
 

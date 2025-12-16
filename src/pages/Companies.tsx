@@ -19,7 +19,6 @@ const Companies = () => {
   const handleAddCompany = (newCompany: Company) => {
     const updatedList = [newCompany, ...companiesList];
     setCompaniesList(updatedList);
-    // Зберігаємо оновлений список у localStorage
     localStorage.setItem("crm_companies_data", JSON.stringify(updatedList));
   };
 
@@ -42,8 +41,8 @@ const Companies = () => {
           />
         </div>
       </header>
-      <section className="flex justify-between items-center px-10">
-        <div className="relative w-114">
+      <section className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center px-4 sm:px-10 gap-4">
+        <div className="relative w-114 sm:w-96">
           <input
             type="text"
             className="border border-[#d1d5db] rounded-lg py-3 pl-3 pr-10 h-11 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-gray-400 focus:border-transparent transition-all"
@@ -56,7 +55,7 @@ const Companies = () => {
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className="border cursor-pointer border-[#d1d5db] rounded-l rounded-r py-2.5 px-5 h-11 w-37 text-white bg-[#111827] justify-center items-center flex ml-auto"
+          className="border cursor-pointer border-[#d1d5db] rounded-l rounded-r w-full sm:w-auto py-2.5 px-5 h-11 text-white bg-[#111827] justify-center items-center flex ml-auto"
         >
           Add company
         </button>

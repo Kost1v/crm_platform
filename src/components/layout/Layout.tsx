@@ -1,9 +1,7 @@
-import Sidebar from "./Sidebar"
+import Sidebar from "./Sidebar";
 
 const Layout = () => {
-  return (
-    <Sidebar/>
-  )
-}
+  return <Sidebar />;
+};
 
-export default Layout
+export default Layout;

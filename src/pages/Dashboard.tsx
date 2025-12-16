@@ -1,3 +1,4 @@
+import World from "../components/dashboard/World";
 import { statsData, salesData, categoriesStats } from "../data/dashboardData";
 
 const Dashboard = () => {
@@ -129,20 +130,18 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {/* Map Section */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 mx-10">
-        {/* Map Section (stays in narrow column) */}
-        <div className="lg:col-span-2">
-          <h2 className="text-xl font-medium text-gray-800 mb-4">
+        <div className="lg:col-span-2 bg-[#f3f4f6] rounded-lg p-5">
+          <h2 className="text-xl font-medium text-gray-800">
             Countries of companies
           </h2>
-          <div className="bg-white rounded-xl shadow-sm h-64 flex items-center justify-center border border-dashed border-gray-300">
-            <span className="text-gray-400 text-center px-4">
-              Map Visualization
-              <br />
-              (Compact View)
-            </span>
+          {/* Тут краще поставити h-80 (320px), щоб карта гарно влізла */}
+          <div className="h-80 overflow-hidden">
+            <World />
           </div>
         </div>
+        {/* <WorldMap /> */}
         <div className="lg:col-span-2 space-y-8 bg-[#f3f4f6] p-5 rounded-lg">
           {/* Sales Details Table */}
           <h3 className="text-xl font-medium text-gray-800 mb-5">Promotions</h3>

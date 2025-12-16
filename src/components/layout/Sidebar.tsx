@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
 
   return (
-    <div className="w-1/6 min-w-48 relative bg-[#111827] text-white flex flex-col ">
+    <div className="w-1/6 min-w-42 relative bg-[#111827] text-white flex flex-col ">
       <NavLink to="" className="pt-8 flex items-center justify-center gap-2 ">
         <Hexagon className="w-6 h-6 text-blue-500 fill-current" />
         <span className="text-xl font-bold tracking-wide">TruScape</span>
